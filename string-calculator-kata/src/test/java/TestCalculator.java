@@ -146,6 +146,4 @@ public class TestCalculator{
 			assertEquals(8, cal.add("1,2,10004,5"));
 		}
 		
-		
-		
 }

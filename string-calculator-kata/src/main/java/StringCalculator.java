@@ -31,6 +31,7 @@ public class StringCalculator {
 	}
 	
 	
+	
 	private String[] getNumbersTab(String numbersString) throws Exception{
 		if(numbersString.length()>4 && 
 				numbersString.substring(0, 4).matches(newDelimiterChangingRegex)){
