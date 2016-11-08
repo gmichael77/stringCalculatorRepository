@@ -29,7 +29,13 @@ public class StringCalculator {
 	
 	
 	
-	private int StringToInt(String numberString){
+	private int StringToInt(String numberString) throws Exception{
+		
+		int i = Integer.parseInt(numberString);
+		
+		if(i<0)
+			throw new Exception("negatives not allowed");
+		
 		return Integer.parseInt(numberString);
 	}
 	
@@ -49,7 +55,7 @@ public class StringCalculator {
 	
 	
 	//Somme d'une liste de string
-	private int getStringSum(String[] numbers){
+	private int getStringSum(String[] numbers) throws Exception{
 		int result=0;
 		for(String uniqueNumber :numbers){
 			result += StringToInt(uniqueNumber);
