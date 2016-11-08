@@ -78,6 +78,11 @@ public class TestCalculator{
 			assertEquals(6, cal.add("2,3\n1"));
 		}
 		
-		
+		@Test(expected=Exception.class)
+		public void StringWithNumbersAndEndingWithCommaOrNewLineReturnException(){
+			
+			assertEquals(6, cal.add("1,2,3\n"));
+			assertEquals(6, cal.add("2,3\n1,"));
+		}
 	
 }
