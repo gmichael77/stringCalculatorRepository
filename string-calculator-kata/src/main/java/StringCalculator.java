@@ -3,6 +3,8 @@ public class StringCalculator {
 
 	private final String[] delimiters={",","\n"};
 	private final String newDelimiterChangingRegex = "^//.\n";
+	private final int numberLimitMax =1000;
+	private final int numberLimitMin =0;
 	
 	
 	//exception  
@@ -20,7 +22,12 @@ public class StringCalculator {
 	
 	
 	private int StringToInt(String numberString) throws Exception{		
-		return Integer.parseInt(numberString);
+		int i = Integer.parseInt(numberString);
+		if(i>numberLimitMax){
+			i=0;
+		}
+		
+		return i;
 	}
 	
 	
@@ -46,7 +53,7 @@ public class StringCalculator {
 		
 		for(String uniqueNumber :numbers){
 			int num = StringToInt(uniqueNumber);
-			if(num<0){
+			if(num<numberLimitMin){
 				InputisOk = InputisOk && false;
 				errorMessageInput = errorMessageInput.concat(uniqueNumber).concat(" ");
 			}
