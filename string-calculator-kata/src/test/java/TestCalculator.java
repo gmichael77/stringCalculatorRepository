@@ -100,5 +100,12 @@ public class TestCalculator{
 			assertEquals(3, cal.add("//;\n1;2"));
 		}
 		
+		
+		// input avec nombre negatif
+		@Test(expected=Exception.class)
+		public void StringWithNegativeNumbersReturnException() throws Exception{
+			
+			assertEquals(-1, cal.add("-1"));
+		}
 	
 }
