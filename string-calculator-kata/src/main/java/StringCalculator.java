@@ -13,21 +13,12 @@ public class StringCalculator {
 			return 0;
 		
 
-		String[] numbers = null;
-		if(numbersString.length()>4 && 
-				numbersString.substring(0, 4).matches(newDelimiterChangingRegex)){
-			//nouveau delimiter
-			String newDelim = numbersString.substring(2, 3);
-			numbersString = numbersString.substring(4);
-			numbers = numbersString.split(newDelim);
-		}else{
-			numbers = numbersString.split(getDelimiterRegex(numbersString));
-		}
+		String[] numbers = getNumbersTab(numbersString);
 		
 		
 		//nombre unique -- useCase 1.2
 		if(numbers.length==1)
-			return Integer.parseInt(numbersString);
+			return StringToInt(numbersString);
 		
 		
 		
@@ -37,11 +28,31 @@ public class StringCalculator {
 	}
 	
 	
+	
+	private int StringToInt(String numberString){
+		return Integer.parseInt(numberString);
+	}
+	
+	
+	private String[] getNumbersTab(String numbersString) throws Exception{
+		if(numbersString.length()>4 && 
+				numbersString.substring(0, 4).matches(newDelimiterChangingRegex)){
+			//nouveau delimiter
+			String newDelim = numbersString.substring(2, 3);
+			numbersString = numbersString.substring(4);
+			return  numbersString.split(newDelim);
+		}else{
+			return  numbersString.split(getDelimiterRegex(numbersString));
+		}
+	}
+	
+	
+	
 	//Somme d'une liste de string
 	private int getStringSum(String[] numbers){
 		int result=0;
 		for(String uniqueNumber :numbers){
-			result += Integer.parseInt(uniqueNumber);
+			result += StringToInt(uniqueNumber);
 		}
 		return result;
 	}
