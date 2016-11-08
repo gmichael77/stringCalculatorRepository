@@ -138,4 +138,12 @@ public class TestCalculator{
 			fail();
 		}
 	
+		
+		//input avec gros chiffre (>1000)
+		@Test
+		public void StringBigNumbersToBeIgnoreReturnSum() throws Exception{
+			
+			assertEquals(8, cal.add("1,2,10004,5"));
+		}
+		
 }
