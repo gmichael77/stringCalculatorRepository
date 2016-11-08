@@ -2,6 +2,7 @@
 public class StringCalculator {
 
 	private final String[] delimiters={",","\n"};
+	private final String newDelimiterChangingRegex = "^//.\n";
 	
 	
 	//exception  
@@ -11,8 +12,18 @@ public class StringCalculator {
 		if(numbersString.isEmpty())
 			return 0;
 		
-		String delimiterRegex = getDelimiterRegex(numbersString);		
-		String[] numbers = numbersString.split(delimiterRegex);
+
+		String[] numbers = null;
+		if(numbersString.length()>4 && 
+				numbersString.substring(0, 4).matches(newDelimiterChangingRegex)){
+			//nouveau delimiter
+			String newDelim = numbersString.substring(2, 3);
+			numbersString = numbersString.substring(4);
+			numbers = numbersString.split(newDelim);
+		}else{
+			numbers = numbersString.split(getDelimiterRegex(numbersString));
+		}
+		
 		
 		//nombre unique -- useCase 1.2
 		if(numbers.length==1)
@@ -38,6 +49,11 @@ public class StringCalculator {
 	
 	private String getDelimiterRegex(String numbersString) throws Exception{
 		String delimiterRegex="";
+		
+		
+		if(numbersString.startsWith(""))
+		
+		
 		for(String delimiter:delimiters){
 			
 			if(numbersString.endsWith(delimiter))

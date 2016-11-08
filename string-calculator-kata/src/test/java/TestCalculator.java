@@ -78,6 +78,8 @@ public class TestCalculator{
 			assertEquals(6, cal.add("2,3\n1"));
 		}
 		
+		
+		//si la chaine finit par plusieur delimiters --> encapsulé par l'exception sur la fin par 1 delimiter
 		@Test(expected=Exception.class)
 		public void StringWithNumbersAndEndingWithNewLineReturnException() throws Exception{
 			
@@ -89,5 +91,14 @@ public class TestCalculator{
 			
 			assertEquals(6, cal.add("1,2,3,"));
 		}
+		
+		
+		// changement de delimiter
+		@Test
+		public void StringWithDelimiterChangingReturnSum() throws Exception{
+			
+			assertEquals(3, cal.add("//;\n1;2"));
+		}
+		
 	
 }
