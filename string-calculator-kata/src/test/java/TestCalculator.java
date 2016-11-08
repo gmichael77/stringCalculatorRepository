@@ -50,4 +50,25 @@ public class TestCalculator{
 		assertEquals(result, cal.add(String.valueOf(entierRandom1).concat(",").concat(String.valueOf(entierRandom2))));
 	}
 	
+	
+	//chaine avec  nombre illimité a additionner (delimitée avec une virgule)
+		@Test
+		public void StringWithUnknownNumbersDelimitedByCommaReturnSum(){
+			
+			int result = 0;
+			String stringNumbers= String.valueOf(myRandomInteger());
+			
+			for(int i=20;i>0;i--){
+				
+				//entre 0 et 9
+				int entierRandom = myRandomInteger();
+				result = result + entierRandom;
+				stringNumbers.concat(",").concat(String.valueOf(entierRandom));
+			}
+			
+			assertEquals(28, cal.add("1,2,3,4,5,6,7"));
+			assertEquals(result, stringNumbers);
+		}
+	
+	
 }
