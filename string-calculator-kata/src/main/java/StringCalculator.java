@@ -14,8 +14,19 @@ public class StringCalculator {
 			return Integer.parseInt(numbersString);
 		
 		
-		return Integer.parseInt(numbers[0])+Integer.parseInt(numbers[1]);
+		int result=0;
+		for(String uniqueNumber :numbers){
+			result = sumStringNumber(result,uniqueNumber);
+		}
 		
+		return result;
+		
+	}
+	
+	
+	//addition d'un nombre supplementaire a la somme finale
+	private int sumStringNumber(int sum,String number){
+		return sum+Integer.parseInt(number);
 	}
 	
 }

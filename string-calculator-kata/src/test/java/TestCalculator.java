@@ -55,19 +55,19 @@ public class TestCalculator{
 		@Test
 		public void StringWithUnknownNumbersDelimitedByCommaReturnSum(){
 			
-			int result = 0;
-			String stringNumbers= String.valueOf(myRandomInteger());
+			int result = myRandomInteger();
+			String stringNumbers= String.valueOf(result);
 			
 			for(int i=20;i>0;i--){
 				
 				//entre 0 et 9
 				int entierRandom = myRandomInteger();
 				result = result + entierRandom;
-				stringNumbers.concat(",").concat(String.valueOf(entierRandom));
+				stringNumbers = stringNumbers.concat(",").concat(String.valueOf(entierRandom));
 			}
 			
 			assertEquals(28, cal.add("1,2,3,4,5,6,7"));
-			assertEquals(result, stringNumbers);
+			assertEquals(result, cal.add(stringNumbers));
 		}
 	
 	
