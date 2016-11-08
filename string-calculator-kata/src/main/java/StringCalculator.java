@@ -12,18 +12,14 @@ public class StringCalculator {
 		if(numbersString.isEmpty())
 			return 0;
 		
-
-		String[] numbers = getNumbersTab(numbersString);
-		
-		return	getStringSum(numbers);
+		return	getStringSum(getNumbersTab(numbersString));
 	
 		
 	}
 	
 	
 	
-	private int StringToInt(String numberString) throws Exception{
-		
+	private int StringToInt(String numberString) throws Exception{		
 		return Integer.parseInt(numberString);
 	}
 	
@@ -67,10 +63,6 @@ public class StringCalculator {
 	
 	private String getDelimiterRegex(String numbersString) throws Exception{
 		String delimiterRegex="";
-		
-		
-		if(numbersString.startsWith(""))
-		
 		
 		for(String delimiter:delimiters){
 			
