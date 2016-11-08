@@ -15,13 +15,6 @@ public class StringCalculator {
 
 		String[] numbers = getNumbersTab(numbersString);
 		
-		
-		//nombre unique -- useCase 1.2
-		if(numbers.length==1)
-			return StringToInt(numbersString);
-		
-		
-		
 		return	getStringSum(numbers);
 	
 		
@@ -30,11 +23,6 @@ public class StringCalculator {
 	
 	
 	private int StringToInt(String numberString) throws Exception{
-		
-		int i = Integer.parseInt(numberString);
-		
-		if(i<0)
-			throw new Exception("negatives not allowed"+numberString);
 		
 		return Integer.parseInt(numberString);
 	}
@@ -57,9 +45,22 @@ public class StringCalculator {
 	//Somme d'une liste de string
 	private int getStringSum(String[] numbers) throws Exception{
 		int result=0;
+		boolean InputisOk = true;
+		String errorMessageInput ="";
+		
 		for(String uniqueNumber :numbers){
+			int num = StringToInt(uniqueNumber);
+			if(num<0){
+				InputisOk = InputisOk && false;
+				errorMessageInput = errorMessageInput.concat(uniqueNumber).concat(" ");
+			}
 			result += StringToInt(uniqueNumber);
 		}
+		
+		
+		if(!InputisOk)
+			throw new Exception("negatives not allowed : "+errorMessageInput);
+		
 		return result;
 	}
 	

@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -106,6 +106,36 @@ public class TestCalculator{
 		public void StringWithNegativeNumbersReturnException() throws Exception{
 			
 			assertEquals(-1, cal.add("-1"));
+		}
+		
+		
+		// input avec nombre negatif
+		@Test(expected=Exception.class)
+		public void StringWithAllNegativeNumbersReturnException() throws Exception{
+			
+			try{
+				assertEquals(-1, cal.add("-1,-2,-3,-4"));
+			}catch(Exception e){
+				
+				assertEquals("negatives not allowed : -1 -2 -3 -4 ",e.getMessage());
+				throw new Exception(e.getMessage());
+			}
+			fail();
+		}
+		
+		
+		// input avec nombre negatif
+		@Test(expected=Exception.class)
+		public void StringWithNegativeAndPositiveNumbersReturnException() throws Exception{
+			
+			try{
+				assertEquals(-1, cal.add("-1,2,-5,8"));
+			}catch(Exception e){
+				
+				assertEquals("negatives not allowed : -1 -5 ",e.getMessage());
+				throw new Exception(e.getMessage());
+			}
+			fail();
 		}
 	
 }
