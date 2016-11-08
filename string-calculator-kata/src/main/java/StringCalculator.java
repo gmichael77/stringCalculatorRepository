@@ -1,7 +1,8 @@
 
 public class StringCalculator {
 
-	private final String delimiter=",|\n";
+	private final String[] delimiters={",","\n"};
+	
 	
 	//exception  
 	public int add(String numbersString) throws Exception{
@@ -10,11 +11,20 @@ public class StringCalculator {
 		if(numbersString.isEmpty())
 			return 0;
 		
-		if(numbersString.endsWith("\n"))
-			throw new Exception("String chaine ending with a delimiter");
+		
+		for(String delimiter:delimiters){
+			if(numbersString.endsWith(delimiter))
+				throw new Exception("String chaine ending with a delimiter");
+		}
 		
 		
-		String[] numbers = numbersString.split(delimiter);
+		String delimiterRegex="";
+		for(String delimiter:delimiters){
+			delimiterRegex = delimiterRegex.concat("|").concat(delimiter);
+		}
+		delimiterRegex = delimiterRegex.substring(1);
+		
+		String[] numbers = numbersString.split(delimiterRegex);
 		
 		//nombre unique -- useCase 1.2
 		if(numbers.length==1)
