@@ -34,7 +34,7 @@ public class StringCalculator {
 		int i = Integer.parseInt(numberString);
 		
 		if(i<0)
-			throw new Exception("negatives not allowed");
+			throw new Exception("negatives not allowed"+numberString);
 		
 		return Integer.parseInt(numberString);
 	}
