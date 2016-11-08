@@ -11,19 +11,7 @@ public class StringCalculator {
 		if(numbersString.isEmpty())
 			return 0;
 		
-		
-		for(String delimiter:delimiters){
-			if(numbersString.endsWith(delimiter))
-				throw new Exception("String chaine ending with a delimiter");
-		}
-		
-		
-		String delimiterRegex="";
-		for(String delimiter:delimiters){
-			delimiterRegex = delimiterRegex.concat("|").concat(delimiter);
-		}
-		delimiterRegex = delimiterRegex.substring(1);
-		
+		String delimiterRegex = getDelimiterRegex(numbersString);		
 		String[] numbers = numbersString.split(delimiterRegex);
 		
 		//nombre unique -- useCase 1.2
@@ -42,9 +30,22 @@ public class StringCalculator {
 	private int getStringSum(String[] numbers){
 		int result=0;
 		for(String uniqueNumber :numbers){
-			result = result + Integer.parseInt(uniqueNumber);
+			result += Integer.parseInt(uniqueNumber);
 		}
 		return result;
+	}
+	
+	
+	private String getDelimiterRegex(String numbersString) throws Exception{
+		String delimiterRegex="";
+		for(String delimiter:delimiters){
+			
+			if(numbersString.endsWith(delimiter))
+				throw new Exception("String chaine ending with a delimiter");
+			
+			delimiterRegex = delimiterRegex.concat("|").concat(delimiter);
+		}
+		return delimiterRegex.substring(1);
 	}
 	
 }
