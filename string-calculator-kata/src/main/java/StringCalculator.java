@@ -1,7 +1,7 @@
 
 public class StringCalculator {
 
-	private final String delimiter=",";
+	private final String delimiter=",|\n";
 	
 	public int add(String numbersString){
 		
