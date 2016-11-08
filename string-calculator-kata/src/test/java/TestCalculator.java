@@ -71,10 +71,10 @@ public class TestCalculator{
 		}
 	
 		
-		//@Test
+		@Test
 		public void StringWithNumbersDelimitedByCommaOrNewLineReturnSum(){
 			
-			assertEquals(6, cal.add("1/n2,3"));
+			assertEquals(6, cal.add("1\n2,3"));
 			assertEquals(6, cal.add("2,3\n1"));
 		}
 		
