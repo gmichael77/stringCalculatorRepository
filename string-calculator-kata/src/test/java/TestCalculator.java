@@ -38,5 +38,16 @@ public class TestCalculator{
 	}
 	
 	
+	//chaine avec 2 nombre a additionner (delimitée avec une virgule)
+	@Test
+	public void StringWithTwoNumbersDelimitedByCommaReturnSum(){
+		
+		//entre 0 et 9
+		int entierRandom1 = myRandomInteger();
+		int entierRandom2 = myRandomInteger();
+		int result = entierRandom1+entierRandom2;
+		assertEquals(6, cal.add("2,4"));
+		assertEquals(result, cal.add(String.valueOf(entierRandom1).concat(",").concat(String.valueOf(entierRandom2))));
+	}
 	
 }

@@ -6,9 +6,8 @@ public class StringCalculator {
 		//chaine vide -- useCase 1.1
 		if(numbers.isEmpty())
 			return 0;
-		
-		
-		return -1;
+		//nombre unique -- useCase 1.2
+		return Integer.parseInt(numbers);
 	}
 	
 }
