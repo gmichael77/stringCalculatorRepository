@@ -17,7 +17,7 @@ public class TestCalculator{
 	
 	//chaine vide --> 0
 	@Test
-	public void emptyStringReturnNull(){
+	public void emptyStringReturnNull() throws Exception{
 		assertEquals(0, cal.add(""));
 	}
 	
@@ -30,7 +30,7 @@ public class TestCalculator{
 	
 	//chaine avec 1 seul nombre -->  retour du nombre
 	@Test
-	public void StringWithUniqueNumberReturn(){
+	public void StringWithUniqueNumberReturn() throws Exception{
 		
 		//entre 0 et 9
 		int entierRandom = myRandomInteger();
@@ -40,7 +40,7 @@ public class TestCalculator{
 	
 	//chaine avec 2 nombre a additionner (delimitée avec une virgule)
 	@Test
-	public void StringWithTwoNumbersDelimitedByCommaReturnSum(){
+	public void StringWithTwoNumbersDelimitedByCommaReturnSum() throws Exception{
 		
 		//entre 0 et 9
 		int entierRandom1 = myRandomInteger();
@@ -53,7 +53,7 @@ public class TestCalculator{
 	
 	//chaine avec  nombre illimité a additionner (delimitée avec une virgule)
 		@Test
-		public void StringWithUnknownNumbersDelimitedByCommaReturnSum(){
+		public void StringWithUnknownNumbersDelimitedByCommaReturnSum() throws Exception{
 			
 			int result = myRandomInteger();
 			String stringNumbers= String.valueOf(result);
@@ -72,17 +72,22 @@ public class TestCalculator{
 	
 		
 		@Test
-		public void StringWithNumbersDelimitedByCommaOrNewLineReturnSum(){
+		public void StringWithNumbersDelimitedByCommaOrNewLineReturnSum() throws Exception{
 			
 			assertEquals(6, cal.add("1\n2,3"));
 			assertEquals(6, cal.add("2,3\n1"));
 		}
 		
 		@Test(expected=Exception.class)
-		public void StringWithNumbersAndEndingWithCommaOrNewLineReturnException(){
+		public void StringWithNumbersAndEndingWithNewLineReturnException() throws Exception{
 			
 			assertEquals(6, cal.add("1,2,3\n"));
-			assertEquals(6, cal.add("2,3\n1,"));
+		}
+		
+		@Test(expected=Exception.class)
+		public void StringWithNumbersAndEndingWithCommaReturnException() throws Exception{
+			
+			assertEquals(6, cal.add("1,2,3,"));
 		}
 	
 }

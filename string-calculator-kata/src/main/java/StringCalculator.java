@@ -3,11 +3,16 @@ public class StringCalculator {
 
 	private final String delimiter=",|\n";
 	
-	public int add(String numbersString){
+	//exception  
+	public int add(String numbersString) throws Exception{
 		
 		//chaine vide -- useCase 1.1
 		if(numbersString.isEmpty())
 			return 0;
+		
+		if(numbersString.endsWith("\n"))
+			throw new Exception("String chaine ending with a delimiter");
+		
 		
 		String[] numbers = numbersString.split(delimiter);
 		
